@@ -2,7 +2,10 @@ import { Header } from '../../components/Header/index.js';
 import { Footer } from '../../components/Footer/index.js';
 import { SignUpForm } from './SignUpForm/index.js';
 
-export const SignUpPage = () => {
+export const SignUpPage = ({ session }) => {
+  if (session) {
+    window.location.href = '/';
+  }
   const element = document.createElement('div');
   element.classList.add('page');
   element.append(Header());

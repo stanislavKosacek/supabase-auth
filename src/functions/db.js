@@ -12,13 +12,14 @@ export const getShoppingItemById = (id) => {
   return supabase.from('shopping_item').select('*').eq('id', id).single();
 };
 
-export const addShoppingItem = (product, amount, unit) => {
+export const addShoppingItem = (product, amount, unit, userId) => {
   const supabase = getSupabase();
   return supabase.from('shopping_item').insert({
     product: product,
     amount: amount,
     unit: unit,
     done: false,
+    user_id: userId,
   });
 };
 

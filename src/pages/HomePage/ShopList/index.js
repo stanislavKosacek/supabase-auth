@@ -3,7 +3,7 @@ import { getShoppingItems, addShoppingItem } from '../../../functions/db.js';
 import './style.css';
 
 export const ShopList = (props) => {
-  const { day, dayResult } = props;
+  const { day, dayResult, session } = props;
 
   let dayName = 'Načítám...';
   if (dayResult !== 'loading') {
@@ -37,6 +37,7 @@ export const ShopList = (props) => {
           ShopList({
             day: day,
             dayResult: data,
+            session: session,
           }),
         );
       }
@@ -54,6 +55,7 @@ export const ShopList = (props) => {
       productInput.value,
       amountInput.value,
       unitInput.value,
+      session.user.id,
     ).then((response) => {
       getShoppingItems().then((response) => {
         const { data, error } = response;
@@ -62,6 +64,7 @@ export const ShopList = (props) => {
             ShopList({
               day: day,
               dayResult: data,
+              session: session,
             }),
           );
         }

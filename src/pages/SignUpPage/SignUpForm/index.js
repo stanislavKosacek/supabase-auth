@@ -1,4 +1,5 @@
 import './style.css';
+import { signUp } from '../../../functions/auth';
 
 export const SignUpForm = () => {
   const formElm = document.createElement('form');
@@ -24,6 +25,11 @@ export const SignUpForm = () => {
     e.preventDefault();
     const emailInput = formElm.querySelector('.input__email');
     const passwordInput = formElm.querySelector('.input__password');
+
+    signUp(emailInput.value, passwordInput.value).then((response) => {
+      window.location.href = '/';
+    });
+
     // registrace uživatele
   });
 

@@ -1,4 +1,5 @@
 import './style.css';
+import { signIn } from '../../../functions/auth';
 
 export const LoginForm = () => {
   const formElm = document.createElement('form');
@@ -25,6 +26,10 @@ export const LoginForm = () => {
     const emailInput = formElm.querySelector('.input__email');
     const passwordInput = formElm.querySelector('.input__password');
     // přihlášení uživatele
+    signIn(emailInput.value, passwordInput.value).then((response) => {
+      console.log(response);
+      window.location.href = '/';
+    });
   });
 
   return formElm;
